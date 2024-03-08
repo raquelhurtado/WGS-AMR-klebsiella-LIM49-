@@ -36,9 +36,10 @@ To multiple samples:
 for f in *.fna; do PointFinder.py -i "$f" -o /path/to/output-dir/ -p /path/to/pointfinder_db/ -s salmonella -m blastn -m_p /usr/bin/blastn;done;
 ```
 ## Prediction of plasmids
+
 Mob-suite
 ```
-mob_recon -c -i <strain>.fna -p <strain> -o <strain>
+mob_recon -u -c -i <strain>.fna -p <strain> -o <strain>
 ```
 To multiple samples:
 ```
@@ -48,3 +49,11 @@ for f in *.fna; do mob_recon -c -i "$f" -p "${f/.fna}" -o "${f/.fna}"; done;
 Abricate
 ```
 isescan.py --nthread 4 –seqfile UG14.fna –output UG14_IS
+```
+
+## Variant Calling and annotation
+Snippy
+```
+snippy --cpus 6 --mincov 5 --outdir SE2 --ref SE7.gbk --R1 SE2_R1.fastq.gz --R2 SE2_R2.fastq.gz
+snippy-core --prefix core mysnps1 mysnps2 mysnps3 mysnps4
+```
